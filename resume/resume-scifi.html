@@ -367,6 +367,33 @@
             box-shadow: 0 0 20px var(--magenta);
         }
 
+        .back-btn {
+            background: transparent;
+            border: 2px solid var(--cyan);
+            color: var(--cyan);
+            margin-right: 20px;
+        }
+
+        .back-btn:hover {
+            background: var(--cyan);
+            color: var(--dark);
+        }
+
+        .top-back-link {
+            display: inline-block;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--cyan);
+            text-decoration: none;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .top-back-link:hover {
+            color: var(--magenta);
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -421,6 +448,7 @@
     <div class="grid-bg"></div>
 
     <div class="container">
+        <a href="../index.html" class="top-back-link">&lt; BACK TO PORTFOLIO</a>
         <header class="header">
             <div class="header-content">
                 <div class="header-info">
@@ -549,6 +577,7 @@
         </section>
 
         <div class="download-section">
+            <a href="../index.html" class="download-btn back-btn">BACK TO PORTFOLIO</a>
             <a href="BoBanducci_Resume.png" download class="download-btn">DOWNLOAD PNG</a>
         </div>
 
