@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANDUCCI // PERSONNEL FILE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #00f0ff;
+            --cyan-dim: #00f0ff40;
+            --magenta: #ff00aa;
+            --yellow: #f0ff00;
+            --dark: #0a0a12;
+            --darker: #050508;
+            --panel: #0d0d18;
+            --border: #1a1a2e;
+            --text: #c0c0d0;
+            --text-dim: #606080;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--darker);
+            color: var(--text);
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Scanlines overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.1) 2px,
+                rgba(0, 0, 0, 0.1) 4px
+            );
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Grid background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--panel);
+            border: 1px solid var(--cyan-dim);
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+        }
+
+        .header::before {
+            content: 'CLASSIFIED // PERSONNEL FILE // CLEARANCE LEVEL: PUBLIC';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 5px 15px;
+            background: var(--cyan);
+            color: var(--dark);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow:
+                0 0 10px var(--cyan),
+                0 0 20px var(--cyan-dim);
+            line-height: 1;
+        }
+
+        .name span {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--cyan);
+            letter-spacing: 8px;
+            margin-top: 5px;
+        }
+
+        .title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.3rem;
+            color: var(--magenta);
+            font-weight: 600;
+            margin-top: 15px;
+            padding-left: 15px;
+            border-left: 3px solid var(--magenta);
+        }
+
+        /* Contact panel */
+        .contact-panel {
+            background: var(--dark);
+            border: 1px solid var(--border);
+            padding: 20px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            min-width: 250px;
+        }
+
+        .contact-panel::before {
+            content: '[ CONTACT DATA ]';
+            display: block;
+            color: var(--cyan);
+            margin-bottom: 15px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        .contact-item {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .contact-label {
+            color: var(--text-dim);
+            width: 60px;
+            flex-shrink: 0;
+        }
+
+        .contact-value {
+            color: var(--yellow);
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--dark);
+            background: var(--cyan);
+            padding: 5px 12px;
+            margin-right: 15px;
+            clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--cyan-dim), transparent);
+            margin-left: 20px;
+        }
+
+        /* Experience entries */
+        .experience-entry {
+            position: relative;
+            padding: 25px;
+            margin-bottom: 20px;
+            background: var(--panel);
+            border-left: 3px solid var(--cyan);
+            transition: all 0.3s ease;
+        }
+
+        .experience-entry:hover {
+            border-left-color: var(--magenta);
+            background: #10101c;
+        }
+
+        .experience-entry::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--cyan-dim));
+            opacity: 0.1;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .entry-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .entry-company {
+            font-size: 1rem;
+            color: var(--cyan);
+            margin-top: 5px;
+        }
+
+        .entry-date {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            background: var(--dark);
+            padding: 5px 15px;
+            border: 1px solid var(--border);
+        }
+
+        .entry-description {
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .entry-description ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .entry-description li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+        }
+
+        .entry-description li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--cyan);
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: bold;
+        }
+
+        /* Status indicator */
+        .status-current {
+            display: inline-block;
+            background: var(--cyan);
+            color: var(--dark);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            margin-left: 10px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Corner decorations */
+        .corner-decor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--cyan);
+        }
+
+        .corner-decor.tl { top: -5px; left: -5px; border-right: none; border-bottom: none; }
+        .corner-decor.tr { top: -5px; right: -5px; border-left: none; border-bottom: none; }
+        .corner-decor.bl { bottom: -5px; left: -5px; border-right: none; border-top: none; }
+        .corner-decor.br { bottom: -5px; right: -5px; border-left: none; border-top: none; }
+
+        /* Education section */
+        .education-entry {
+            padding: 20px 25px;
+            background: var(--panel);
+            border-left: 3px solid var(--magenta);
+        }
+
+        .education-entry .entry-title {
+            color: var(--magenta);
+        }
+
+        .education-entry .entry-company {
+            color: var(--text);
+        }
+
+        /* Download button */
+        .download-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--dark);
+            background: var(--cyan);
+            border: none;
+            text-decoration: none;
+            clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background: var(--magenta);
+            box-shadow: 0 0 20px var(--magenta);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer-code {
+            color: var(--cyan);
+            letter-spacing: 3px;
+        }
+
+        /* Animated accent line */
+        .accent-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent);
+            margin: 30px 0;
+            background-size: 200% 100%;
+            animation: scanLine 3s linear infinite;
+        }
+
+        @keyframes scanLine {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .contact-panel {
+                min-width: auto;
+            }
+
+            .entry-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-info">
+                    <h1 class="name">
+                        BOHDAN BANDUCCI
+                        <span>Software Developer</span>
+                    </h1>
+                    <div class="title">Freelance Software Developer specializing in LLM-based applications</div>
+                </div>
+                <div class="contact-panel">
+                    <div class="contact-item">
+                        <span class="contact-label">LOC:</span>
+                        <span class="contact-value">Austin, TX 78704</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">COM:</span>
+                        <span class="contact-value">bobanducci90@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">FREQ:</span>
+                        <span class="contact-value">707-832-8826</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="accent-line"></div>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">Mission History</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="experience-entry">
+                <div class="corner-decor tl"></div>
+                <div class="corner-decor br"></div>
+                <div class="entry-header">
+                    <div>
+                        <div class="entry-title">
+                            AI Trainer
+                            <span class="status-current">ACTIVE</span>
+                        </div>
+                        <div class="entry-company">Handshake AI // Remote</div>
+                    </div>
+                    <div class="entry-date">2025.10 - PRESENT</div>
+                </div>
+                <div class="entry-description">
+                    <ul>
+                        <li>Developed and evaluated prompts to assess the performance of large language models (LLMs)</li>
+                        <li>Analyzed LLM outputs for scientific accuracy, clarity, and depth</li>
+                        <li>Conducted independent research to support prompt development and evaluation tasks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-entry">
+                <div class="corner-decor tl"></div>
+                <div class="corner-decor br"></div>
+                <div class="entry-header">
+                    <div>
+                        <div class="entry-title">
+                            Software Developer
+                            <span class="status-current">ACTIVE</span>
+                        </div>
+                        <div class="entry-company">Self-Employed // Austin, TX</div>
+                    </div>
+                    <div class="entry-date">2025.01 - PRESENT</div>
+                </div>
+                <div class="entry-description">
+                    Engineered two full-stack LLM-powered applications that automate complex workflows for private equity professionals, delivering measurable improvements in operational efficiency.
+                </div>
+            </div>
+
+            <div class="experience-entry">
+                <div class="entry-header">
+                    <div>
+                        <div class="entry-title">Business Manager</div>
+                        <div class="entry-company">Telstar Services // Austin, TX</div>
+                    </div>
+                    <div class="entry-date">2023.01 - 2024.11</div>
+                </div>
+                <div class="entry-description">
+                    <ul>
+                        <li>Schedule work for multiple technicians</li>
+                        <li>Improve business processes to increase efficiency</li>
+                        <li>Create work orders and communicate customer needs to technicians</li>
+                        <li>Insure Telstar standards are met at every phase of repair</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-entry">
+                <div class="entry-header">
+                    <div>
+                        <div class="entry-title">User Experience Designer</div>
+                        <div class="entry-company">Cortina Productions // McLean, VA</div>
+                    </div>
+                    <div class="entry-date">2013.02 - 2014.08</div>
+                </div>
+                <div class="entry-description">
+                    <ul>
+                        <li>Developed graphical, touch-screen experiences in ActionScript 3 and C# for the Little League World Series Hall of Fame and College and Football Hall of Fame</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Training Records</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="education-entry">
+                <div class="entry-header">
+                    <div>
+                        <div class="entry-title">Philosophy (Bachelor of Arts)</div>
+                        <div class="entry-company">American University</div>
+                    </div>
+                    <div class="entry-date">2012</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="download-section">
+            <a href="resume1pg.pdf" download class="download-btn">DOWNLOAD PDF</a>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-code">FILE_ID: BND-2025-002 // LAST_UPDATED: 2025.10 // STATUS: VERIFIED</div>
+            <div style="margin-top: 10px;">[ END OF TRANSMISSION ]</div>
+        </footer>
+    </div>
+</body>
+</html>
