@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bo Banducci - Portfolio 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            min-height: 100vh;
+        }
+
+        .desktop-link {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background: #111;
+            color: #FFAA00;
+            font-size: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-title {
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid rgba(255, 107, 0, 0.3);
+        }
+
+        .banner {
+            width: 100%;
+            padding: 20px;
+            background-image: url('media/mainbanner.png');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .banner img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .section {
+            padding: 30px 20px;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #FFAA00;
+            text-shadow: 0 0 5px #FF6B00;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin-bottom: 20px;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #FF6B00;
+            border-radius: 8px;
+        }
+
+        .role-title {
+            color: #FFAA00;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-list {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .feature-list li {
+            color: #ccc;
+            font-size: 0.85rem;
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.5;
+        }
+
+        .feature-list li::marker {
+            color: #FF6B00;
+        }
+
+        .feature-list a, .text-area a {
+            color: #FFAA00;
+            text-decoration: none;
+        }
+
+        .section-image {
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-image img {
+            max-width: 100%;
+            border: 2px solid #FF6B00;
+            border-radius: 8px;
+        }
+
+        .text-area {
+            padding: 15px;
+            border: 1px solid #CC4400;
+            border-radius: 8px;
+            background: linear-gradient(180deg, rgba(204, 68, 0, 0.15) 0%, rgba(0,0,0,0.5) 100%);
+            margin-bottom: 15px;
+        }
+
+        .text-area h3 {
+            color: #FFAA00;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .text-area p {
+            color: #ccc;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .contact-section {
+            background: #000;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .contact-section p {
+            color: #ccc;
+            font-size: 0.9rem;
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+
+        .contact-section a {
+            color: #FFAA00;
+            text-decoration: none;
+        }
+
+        .contact-section .discord {
+            color: #FFAA00;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="desktop-link">View Desktop Version</a>
+
+    <div class="nav-title">Bo Banducci - Portfolio 2026</div>
+
+    <div class="banner">
+        <img src="./media/projectstitle.png" alt="Projects">
+    </div>
+
+    <!-- Epsilon IV Section -->
+    <section class="section">
+        <h2 class="section-title">Epsilon IV</h2>
+        <div class="video-wrapper">
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/bU1CztP-2No"
+                title="Epsilon IV Trailer"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="role-title">Role: Lead Programmer</div>
+        <ul class="feature-list">
+            <li>3D Stealth Gameplay with Simulated Noise Emission</li>
+            <li>Enemy Alien AI State Machine</li>
+            <li>Integrated LLM for solving puzzles with intelligent NPCs</li>
+            <li>Play on <a href="https://bobanducci.itch.io/epsilon-iv" target="_blank">itch.io</a></li>
+        </ul>
+    </section>
+
+    <!-- War for the Stars Section -->
+    <section class="section">
+        <h2 class="section-title">War for the Stars</h2>
+        <div class="section-image">
+            <img src="media/card_preview.png" alt="War for the Stars Card">
+        </div>
+        <div class="text-area">
+            <h3>Digital Trading Card Game Prototype</h3>
+            <p>War for the Stars is a digital, sci-fi TCG depicting a war between Earth, Mars, and a rogue AI in an alternate timeline of our solar system. I designed, developed, and playtested it over the course of three months in 2025. It's playable on Tabletop Simulator. View online <a href="https://jeffrobot494.github.io/tcg-v3/deckbuilder.html" target="_blank">deckbuilder</a>.<br><br>Placeholder art generated with Midjourney AI.</p>
+        </div>
+    </section>
+
+    <!-- Interdimensional Warrior Section -->
+    <section class="section">
+        <h2 class="section-title">WIP: My Life as an Interdimensional Warrior</h2>
+        <div class="section-image">
+            <img src="media/gif01.gif" alt="Game preview">
+        </div>
+        <div class="text-area">
+            <h3>Runtime Sprite Generation</h3>
+            <p>The game takes place across infinite worlds generated by the LLM. When the player visits a world, the LLM generates a cast of characters, including a visual description. The visual description is given to the image generation model to create keyframe sprites for each character.</p>
+        </div>
+        <div class="text-area">
+            <h3>Natural Dialogue in Combat</h3>
+            <p>Depending on their personality, NPCs react to all sorts of events in combat, and can engage the player in taunts or serious diplomacy.</p>
+        </div>
+        <div class="text-area">
+            <h3>Turn-based Combat</h3>
+            <p>The game uses a simple JRPG combat system to keep a measured pace so the characters can have detailed dialogues, and so fewer animation frames are needed.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <p>Reach me at <a href="mailto:bobanducci90@gmail.com">bobanducci90@gmail.com</a><br>or <span class="discord">#jeffrobot494</span> on Discord</p>
+    </section>
+</body>
+</html>
