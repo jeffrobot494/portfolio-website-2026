@@ -293,6 +293,7 @@ header h1 {
 
 .text-area.carousel-link {
     cursor: pointer;
+    position: relative;
 }
 
 .text-area.carousel-link:hover {
@@ -304,6 +305,70 @@ header h1 {
     border-width: 3px;
     box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
     background: linear-gradient(180deg, rgba(255, 107, 0, 0.5) 0%, rgba(0,0,0,0.85) 100%);
+}
+
+/* Animated arrows for active carousel link */
+.text-area.carousel-link.active::before,
+.text-area.carousel-link.active::after {
+    content: '▼';
+    position: absolute;
+    top: 0;
+    font-size: 1rem;
+    color: #FF6B00;
+    text-shadow: 0 0 8px #FF6B00, 0 0 15px rgba(255, 107, 0, 0.6);
+    animation: arrowMarquee 2.4s linear infinite;
+    opacity: 0;
+}
+
+.text-area.carousel-link.active::before {
+    left: 5px;
+}
+
+.text-area.carousel-link.active::after {
+    right: 5px;
+}
+
+@keyframes arrowMarquee {
+    0% {
+        top: 0%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        top: calc(100% - 1rem);
+        opacity: 0;
+    }
+}
+
+/* Third carousel link: arrows point up and animate upward */
+.text-area.carousel-link:nth-child(3).active::before,
+.text-area.carousel-link:nth-child(3).active::after {
+    content: '▲';
+    top: auto;
+    bottom: 0;
+    animation: arrowMarqueeUp 2.4s linear infinite;
+}
+
+@keyframes arrowMarqueeUp {
+    0% {
+        bottom: 0%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        bottom: calc(100% - 1rem);
+        opacity: 0;
+    }
 }
 
 .text-area h3 {
@@ -727,6 +792,56 @@ header h1 {
     background: #FF6B00;
     box-shadow: 0 0 10px #FF6B00;
 }
+
+/* Text Carousel */
+.text-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.text-carousel .project-info {
+    flex: 0 1 900px;
+}
+
+.text-carousel .carousel-content {
+    position: relative;
+}
+
+.text-carousel .carousel-item {
+    display: none;
+}
+
+.text-carousel .carousel-item.active {
+    display: block;
+}
+
+/* Text Carousel Arrows */
+.carousel-arrow {
+    background: rgba(204, 68, 0, 0.3);
+    border: 1px solid #CC4400;
+    color: #FFAA00;
+    font-size: 1.5rem;
+    padding: 15px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.carousel-arrow:hover {
+    background: rgba(255, 107, 0, 0.4);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+}
+
+.carousel-arrow.hidden {
+    visibility: hidden;
+}
+
 
 /* Contact Section */
 .contact-section {

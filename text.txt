@@ -1,0 +1,22 @@
+Epsilon IV
+
+Role: Lead Programmer
+- Epsilon IV was created for the Player2 AI Game Jam #3 in October-November 2025
+- We used an LLM to power natural language conversation with NPCs, which was required to solve puzzles.
+- Play on itch.io
+
+"Oh yeah, it's all comin together"
+
+- On day one we created a game design doc which became the bible for our game.
+- There was zero feature creep.
+- Daily check-ins kept the vision aligned.
+
+"You can't sneak away from the aliens once they hear you. So I just run every time."
+- Feedback from playtesters indicated our stealth gameplay was broken. 
+- We had no dedicated Game Designer to identify problems early on.
+- Our over-ambitious design meant we had little time for revisions.
+
+"Despite the Problems..."
+- Epsilon IV won "Best Web Game" and $1000 cash.
+- Average time spent in game is over ten minutes. 
+- We learned lessons about scope and the value of a dedicated Game Designer.

@@ -66,6 +66,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialDelay = Math.random() * 1000 + 1000;
     setTimeout(toggleLanguage, initialDelay);
 
+    // Epsilon IV text carousel
+    const epsilonCarousel = document.getElementById('epsilon-carousel');
+    if (epsilonCarousel) {
+        const items = epsilonCarousel.querySelectorAll('.carousel-item');
+        const leftArrow = epsilonCarousel.querySelector('.carousel-arrow-left');
+        const rightArrow = epsilonCarousel.querySelector('.carousel-arrow-right');
+        let currentIndex = 0;
+
+        function updateEpsilonCarousel() {
+            items.forEach((item, i) => {
+                item.classList.toggle('active', i === currentIndex);
+            });
+            leftArrow.classList.toggle('hidden', currentIndex === 0);
+            rightArrow.classList.toggle('hidden', currentIndex === items.length - 1);
+        }
+
+        leftArrow.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateEpsilonCarousel();
+            }
+        });
+
+        rightArrow.addEventListener('click', () => {
+            if (currentIndex < items.length - 1) {
+                currentIndex++;
+                updateEpsilonCarousel();
+            }
+        });
+
+        updateEpsilonCarousel();
+    }
+
     // Gif carousel
     const carousel = document.querySelector('.gif-carousel');
     const carouselLinks = document.querySelectorAll('.carousel-link');
@@ -105,4 +138,5 @@ document.addEventListener('DOMContentLoaded', () => {
         // Expose showSlide globally for external control
         window.carouselShowSlide = showSlide;
     }
+
 });
