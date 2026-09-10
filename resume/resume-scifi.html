@@ -3,444 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BANDUCCI // PERSONNEL FILE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>Bohdan Banducci | Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cyan: #00f0ff;
-            --cyan-dim: #00f0ff40;
-            --magenta: #ff00aa;
-            --yellow: #f0ff00;
-            --dark: #0a0a12;
-            --darker: #050508;
-            --panel: #0d0d18;
-            --border: #1a1a2e;
-            --text: #c0c0d0;
-            --text-dim: #606080;
+            color-scheme: dark;
+            --accent: #ffaa55;
+            --ink: #d8e0e7;
+            --muted: #a3afbb;
+            --rule: #2b3540;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: var(--darker);
-            color: var(--text);
-            font-family: 'Rajdhani', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
+            background: radial-gradient(ellipse at top left, #38241780, transparent 55%), #08090b;
+            color: var(--ink);
+            font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
         }
-
-        /* Scanlines overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(0, 0, 0, 0.1) 2px,
-                rgba(0, 0, 0, 0.1) 4px
-            );
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        /* Grid background */
-        .grid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        /* Main container */
         .container {
             max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 40px auto;
+            padding: 36px 60px;
+            background: #10151b;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 16px 60px #00000040;
         }
-
-        /* Header */
-        .header {
-            position: relative;
-            margin-bottom: 40px;
-            padding: 30px;
-            background: var(--panel);
-            border: 1px solid var(--cyan-dim);
-            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
-        }
-
-        .header::before {
-            content: 'CLASSIFIED // PERSONNEL FILE // CLEARANCE LEVEL: PUBLIC';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 5px 15px;
-            background: var(--cyan);
-            color: var(--dark);
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-        }
-
-        .header-content {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow:
-                0 0 10px var(--cyan),
-                0 0 20px var(--cyan-dim);
-            line-height: 1;
-        }
-
-        .name span {
-            display: block;
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: var(--cyan);
-            letter-spacing: 8px;
-            margin-top: 5px;
-        }
-
-        .title {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.3rem;
-            color: var(--magenta);
-            font-weight: 600;
-            margin-top: 15px;
-            padding-left: 15px;
-            border-left: 3px solid var(--magenta);
-        }
-
-        /* Contact panel */
-        .contact-panel {
-            background: var(--dark);
-            border: 1px solid var(--border);
-            padding: 20px;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.85rem;
-            min-width: 250px;
-        }
-
-        .contact-panel::before {
-            content: '[ CONTACT DATA ]';
-            display: block;
-            color: var(--cyan);
-            margin-bottom: 15px;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-        }
-
-        .contact-item {
-            display: flex;
-            margin-bottom: 10px;
-            align-items: center;
-        }
-
-        .contact-label {
-            color: var(--text-dim);
-            width: 60px;
-            flex-shrink: 0;
-        }
-
-        .contact-value {
-            color: var(--yellow);
-        }
-
-        /* Section styling */
-        .section {
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .section-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            color: var(--dark);
-            background: var(--cyan);
-            padding: 5px 12px;
-            margin-right: 15px;
-            clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .section-line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--cyan-dim), transparent);
-            margin-left: 20px;
-        }
-
-        /* Experience entries */
-        .experience-entry {
-            position: relative;
-            padding: 25px;
-            margin-bottom: 20px;
-            background: var(--panel);
-            border-left: 3px solid var(--cyan);
-            transition: all 0.3s ease;
-        }
-
-        .experience-entry:hover {
-            border-left-color: var(--magenta);
-            background: #10101c;
-        }
-
-        .experience-entry::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, var(--cyan-dim));
-            opacity: 0.1;
-        }
-
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .entry-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .entry-company {
-            font-size: 1rem;
-            color: var(--cyan);
-            margin-top: 5px;
-        }
-
-        .entry-date {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            background: var(--dark);
-            padding: 5px 15px;
-            border: 1px solid var(--border);
-        }
-
-        .entry-description {
-            color: var(--text);
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        .entry-description ul {
-            list-style: none;
-            margin-top: 10px;
-        }
-
-        .entry-description li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 8px;
-        }
-
-        .entry-description li::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: var(--cyan);
-            font-family: 'Share Tech Mono', monospace;
-            font-weight: bold;
-        }
-
-        /* Status indicator */
-        .status-current {
-            display: inline-block;
-            background: var(--cyan);
-            color: var(--dark);
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.7rem;
-            padding: 3px 10px;
-            margin-left: 10px;
-            animation: blink 2s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Corner decorations */
-        .corner-decor {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--cyan);
-        }
-
-        .corner-decor.tl { top: -5px; left: -5px; border-right: none; border-bottom: none; }
-        .corner-decor.tr { top: -5px; right: -5px; border-left: none; border-bottom: none; }
-        .corner-decor.bl { bottom: -5px; left: -5px; border-right: none; border-top: none; }
-        .corner-decor.br { bottom: -5px; right: -5px; border-left: none; border-top: none; }
-
-        /* Education section */
-        .education-entry {
-            padding: 20px 25px;
-            background: var(--panel);
-            border-left: 3px solid var(--magenta);
-        }
-
-        .education-entry .entry-title {
-            color: var(--magenta);
-        }
-
-        .education-entry .entry-company {
-            color: var(--text);
-        }
-
-        /* Download button */
-        .download-section {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .download-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: var(--dark);
-            background: var(--cyan);
-            border: none;
-            text-decoration: none;
-            clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .download-btn:hover {
-            background: var(--magenta);
-            box-shadow: 0 0 20px var(--magenta);
-        }
-
-        .back-btn {
-            background: transparent;
-            border: 2px solid var(--cyan);
-            color: var(--cyan);
-            margin-right: 20px;
-        }
-
-        .back-btn:hover {
-            background: var(--cyan);
-            color: var(--dark);
-        }
-
         .top-back-link {
             display: inline-block;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--cyan);
+            color: var(--muted);
+            font-size: .8rem;
             text-decoration: none;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
+            margin-bottom: 30px;
         }
-
-        .top-back-link:hover {
-            color: var(--magenta);
+        a:hover { color: var(--accent); text-decoration: underline; }
+        a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+        .header { padding-bottom: 30px; border-bottom: 2px solid var(--accent); }
+        .header-content { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 30px; align-items: center; }
+        .name { font-family: 'Orbitron', sans-serif; font-size: clamp(1.6rem, 3.6vw, 2.35rem); font-weight: 600; line-height: 1.35; letter-spacing: .5px; color: #f0f4f8; }
+        .name span { display: block; font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: .4px; color: var(--accent); margin-top: 12px; }
+        .title { border-left: 2px solid #fa782f; padding-left: 12px; max-width: 440px; font-size: .95rem; color: var(--muted); margin-top: 12px; }
+        .contact-panel { font-size: .82rem; padding-left: 24px; border-left: 1px solid var(--rule); }
+        .contact-item { margin: 5px 0; }
+        .contact-label { display: none; }
+        .contact-value { overflow-wrap: anywhere; }
+        .section { margin-top: 32px; }
+        .section-header { display: flex; align-items: center; gap: 12px; padding-bottom: 10px; margin-bottom: 24px; border-bottom: 1px solid var(--rule); }
+        .section-number { color: var(--accent); font-family: 'IBM Plex Mono', Consolas, monospace; font-size: .75rem; }
+        .section-title { font-family: 'Orbitron', sans-serif; color: #f0f4f8; font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; }
+        .experience-entry { margin-bottom: 25px; padding: 0 0 24px; border-bottom: 1px solid var(--rule); }
+        .experience-entry:last-child { margin-bottom: 0; border-bottom: 0; padding-bottom: 0; }
+        .entry-header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 24px; margin-bottom: 9px; }
+        .entry-header > div:first-child { min-width: 0; }
+        .entry-title { font-family: 'Orbitron', sans-serif; color: #eef3f7; font-size: .95rem; font-weight: 500; line-height: 1.4; }
+        .entry-company { font-size: .93rem; color: var(--accent); margin-top: 3px; }
+        .entry-date { font-family: 'IBM Plex Mono', monospace; flex-shrink: 0; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+        .entry-description { font-size: .94rem; line-height: 1.7; }
+        .entry-description ul { padding-left: 19px; }
+        .entry-description li { padding-left: 3px; margin-bottom: 4px; }
+        .entry-description li::marker { color: var(--accent); font-size: .8em; }
+        .status-current { display: inline-block; vertical-align: middle; margin-left: 8px; padding: 2px 7px; border-radius: 3px; color: var(--accent); background: #ffaa5515; border: 1px solid #ffaa5533; font-size: .61rem; font-weight: 600; letter-spacing: .6px; }
+        .education-entry { padding-bottom: 8px; }
+        .download-section { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 36px; }
+        .download-btn { display: inline-block; padding: 10px 20px; border: 1px solid var(--accent); border-radius: 3px; font-size: .8rem; font-weight: 600; text-decoration: none; color: #14100c; background: var(--accent); }
+        .download-btn:hover { color: #14100c; background: #ffc184; text-decoration: none; }
+        .back-btn { color: var(--accent); background: transparent; }
+        .footer { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--rule); text-align: center; color: var(--muted); font-size: .75rem; letter-spacing: .5px; }
+        .grid-bg, .corner-decor, .accent-line, .section-line { display: none; }
+        @media (max-width: 760px) {
+            .container { margin: 0; padding: 24px; }
+            .header-content { grid-template-columns: 1fr; gap: 20px; }
+            .name { font-size: clamp(1.4rem, 6vw, 2.2rem); }
+            .contact-panel { padding-left: 0; border-left: 0; }
+            .entry-header { flex-direction: column; gap: 5px; }
         }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
-
-        .footer-code {
-            color: var(--cyan);
-            letter-spacing: 3px;
-        }
-
-        /* Animated accent line */
-        .accent-line {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent);
-            margin: 30px 0;
-            background-size: 200% 100%;
-            animation: scanLine 3s linear infinite;
-        }
-
-        @keyframes scanLine {
-            0% { background-position: 100% 0; }
-            100% { background-position: -100% 0; }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                grid-template-columns: 1fr;
-            }
-
-            .name {
-                font-size: 2.5rem;
-            }
-
-            .contact-panel {
-                min-width: auto;
-            }
-
-            .entry-header {
-                flex-direction: column;
-            }
+        @media print {
+            :root { color-scheme: light; --accent: #8a420c; --ink: #24333e; --muted: #586773; --rule: #dce4e5; }
+            .container { background: #fff; border: 0; border-radius: 0; }
+            .name, .section-title, .entry-title { color: #24333e; }
+            .status-current { background: transparent; border: 1px solid var(--rule); }
+            body { background: #fff; font-size: 11pt; }
+            .container { max-width: none; margin: 0; padding: 0; box-shadow: none; border-top: 0; }
+            .top-back-link, .download-section, .footer { display: none; }
+            .experience-entry, .education-entry { break-inside: avoid; }
+            .section-header { break-after: avoid; }
+            .header-content { grid-template-columns: minmax(0, 1fr) auto; }
+            .entry-header { flex-direction: row; }
+            @page { margin: 16mm; }
         }
     </style>
 </head>
@@ -448,15 +99,15 @@
     <div class="grid-bg"></div>
 
     <div class="container">
-        <a href="../index.html" class="top-back-link">&lt; BACK TO PORTFOLIO</a>
+        <a href="../index.html" class="top-back-link">&larr; Back to portfolio</a>
         <header class="header">
             <div class="header-content">
                 <div class="header-info">
                     <h1 class="name">
-                        BOHDAN BANDUCCI
-                        <span>Software Developer</span>
+                        Bohdan Banducci
+                        <span>Product Designer &amp; Developer</span>
                     </h1>
-                    <div class="title">Freelance Software Developer specializing in LLM-based applications</div>
+                    <div class="title">Designing and building digital products, from user experience and workflows to AI-powered applications.</div>
                 </div>
                 <div class="contact-panel">
                     <div class="contact-item">
@@ -480,7 +131,7 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-number">01</span>
-                <h2 class="section-title">Mission History</h2>
+                <h2 class="section-title">Professional Experience</h2>
                 <div class="section-line"></div>
             </div>
 
@@ -491,9 +142,9 @@
                     <div>
                         <div class="entry-title">
                             AI Trainer
-                            <span class="status-current">ACTIVE</span>
+                            <span class="status-current">CURRENT</span>
                         </div>
-                        <div class="entry-company">Handshake AI // Remote</div>
+                        <div class="entry-company">Handshake AI · Remote</div>
                     </div>
                     <div class="entry-date">2025.10 - PRESENT</div>
                 </div>
@@ -512,15 +163,20 @@
                 <div class="entry-header">
                     <div>
                         <div class="entry-title">
-                            Software Developer
-                            <span class="status-current">ACTIVE</span>
+                            Software Consultant
+                            <span class="status-current">CURRENT</span>
                         </div>
-                        <div class="entry-company">Self-Employed // Austin, TX</div>
+                        <div class="entry-company">Self-Employed · Austin, TX</div>
                     </div>
                     <div class="entry-date">2025.01 - PRESENT</div>
                 </div>
                 <div class="entry-description">
-                    Engineered two full-stack LLM-powered applications that automate complex workflows for private equity professionals, delivering measurable improvements in operational efficiency.
+                    <ul>
+                        <li>Designed and built the SmartInsurance web application for Hauser Inc</li>
+                        <li>The application used AI to automate private equity research workflows for a Hauser sales team</li>
+                        <li>Designed and built the SmartBroker web application for David Jacobs Business Broker</li>
+                        <li>The application used AI to do find and qualify small businesses for sales to private equity</li>
+                    </ul>
                 </div>
             </div>
 
@@ -528,7 +184,7 @@
                 <div class="entry-header">
                     <div>
                         <div class="entry-title">Business Manager</div>
-                        <div class="entry-company">Telstar Services // Austin, TX</div>
+                        <div class="entry-company">Telstar Services · Austin, TX</div>
                     </div>
                     <div class="entry-date">2023.01 - 2024.11</div>
                 </div>
@@ -545,8 +201,38 @@
             <div class="experience-entry">
                 <div class="entry-header">
                     <div>
+                        <div class="entry-title">Computer Science Teacher</div>
+                        <div class="entry-company">Northcoast Preparatory and Performing Arts Academy</div>
+                    </div>
+                    <div class="entry-date">2015 - 2018</div>
+                </div>
+                <div class="entry-description">
+                    <ul>
+                        <li>Designed and developed introductory Python programming course</li>
+                        <li>Taught introductory programming to over 75 students</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-entry">
+                <div class="entry-header">
+                    <div>
+                        <div class="entry-title">WordPress Developer</div>
+                    </div>
+                    <div class="entry-date">2015</div>
+                </div>
+                <div class="entry-description">
+                    <ul>
+                        <li>Built a custom WordPress theme from designer-provided layouts and developed an order fulfillment backend for <a href="https://www.domeykophotography.com" style="color: var(--accent);">Domeyko Photography</a>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-entry">
+                <div class="entry-header">
+                    <div>
                         <div class="entry-title">User Experience Designer</div>
-                        <div class="entry-company">Cortina Productions // McLean, VA</div>
+                        <div class="entry-company">Cortina Productions · McLean, VA</div>
                     </div>
                     <div class="entry-date">2013.02 - 2014.08</div>
                 </div>
@@ -556,20 +242,36 @@
                     </ul>
                 </div>
             </div>
+            <div class="experience-entry">
+                <div class="entry-header">
+                    <div>
+                        <div class="entry-title">Junior Software Developer</div>
+                        <div class="entry-company">Cortina Productions</div>
+                    </div>
+                    <div class="entry-date">2013 - 2014</div>
+                </div>
+                <div class="entry-description">
+                    <ul>
+                        <li>Supported development of an interactive exhibit for the World of Little League Museum in South Williamsport, Pennsylvania</li>
+                        <li>Built the prototype for an interactive exhibit for the Anne Frank Museum of Tolerance</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <section class="section">
             <div class="section-header">
                 <span class="section-number">02</span>
-                <h2 class="section-title">Training Records</h2>
+                <h2 class="section-title">Education</h2>
                 <div class="section-line"></div>
             </div>
 
             <div class="education-entry">
                 <div class="entry-header">
                     <div>
-                        <div class="entry-title">Philosophy (Bachelor of Arts)</div>
-                        <div class="entry-company">American University</div>
+                        <div class="entry-title"><strong>Bachelor of Arts in Philosophy</strong></div>
+                        <div><strong>Minor: Computer Science</strong></div>
+                        <div class="entry-company">American University - Washington, D.C.</div>
                     </div>
                     <div class="entry-date">2012</div>
                 </div>
@@ -577,13 +279,12 @@
         </section>
 
         <div class="download-section">
-            <a href="../index.html" class="download-btn back-btn">BACK TO PORTFOLIO</a>
-            <a href="BoBanducci_Resume.png" download class="download-btn">DOWNLOAD PNG</a>
+            <a href="../index.html" class="download-btn back-btn">Back to portfolio</a>
+            <a href="BoBanducci_Resume.png" download class="download-btn">Download PNG</a>
         </div>
 
         <footer class="footer">
-            <div class="footer-code">FILE_ID: BND-2025-002 // LAST_UPDATED: 2025.10 // STATUS: VERIFIED</div>
-            <div style="margin-top: 10px;">[ END OF TRANSMISSION ]</div>
+            <div class="footer-code">Bohdan Banducci · Resume</div>
         </footer>
     </div>
 </body>
