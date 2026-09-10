@@ -91,7 +91,18 @@
             .section-header { break-after: avoid; }
             .header-content { grid-template-columns: minmax(0, 1fr) auto; }
             .entry-header { flex-direction: row; }
-            @page { margin: 16mm; }
+            .header { padding-bottom: 18px; }
+            .name { font-size: 1.85rem; }
+            .title { margin-top: 8px; font-size: .86rem; }
+            .section { margin-top: 20px; }
+            .section-header { margin-bottom: 15px; padding-bottom: 7px; }
+            .experience-entry { margin-bottom: 15px; padding-bottom: 14px; }
+            .entry-header { margin-bottom: 6px; gap: 8px 16px; }
+            .entry-title { font-size: .86rem; }
+            .entry-company { font-size: .84rem; }
+            .entry-description { font-size: .84rem; line-height: 1.45; }
+            .entry-description li { margin-bottom: 3px; }
+            @page { margin: 11mm 13mm; }
         }
     </style>
 </head>
@@ -201,6 +212,37 @@
             <div class="experience-entry">
                 <div class="entry-header">
                     <div>
+                        <div class="entry-title">After-School Computer Science Instructor</div>
+                        <div class="entry-company">Jacoby Creek Middle School · Arcata, CA</div>
+                    </div>
+                    <div class="entry-date">2019</div>
+                </div>
+                <div class="entry-description">
+                    <ul>
+                        <li>Taught after-school computer science classes over several months.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-entry">
+                <div class="entry-header">
+                    <div>
+                        <div class="entry-title">Summer Camp Developer &amp; Instructor</div>
+                        <div class="entry-company">NuGames Summer of Code · In collaboration with NuGames · Arcata, CA</div>
+                    </div>
+                    <div class="entry-date">2015 - 2018 · Seasonal</div>
+                </div>
+                <div class="entry-description">
+                    <ul>
+                        <li>Designed, developed, marketed, and taught five to six week-long camp sessions per summer across three summers during 2015–2018.</li>
+                        <li>Led sessions for groups of five to ten children.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-entry">
+                <div class="entry-header">
+                    <div>
                         <div class="entry-title">Computer Science Teacher</div>
                         <div class="entry-company">Northcoast Preparatory and Performing Arts Academy</div>
                     </div>
@@ -208,8 +250,8 @@
                 </div>
                 <div class="entry-description">
                     <ul>
-                        <li>Designed and developed introductory Python programming course</li>
-                        <li>Taught introductory programming to over 75 students</li>
+                        <li>Designed and taught three courses: introductory Python programming, advanced Python programming, and game development with Unity 3D.</li>
+                        <li>Taught programming to over 75 students.</li>
                     </ul>
                 </div>
             </div>
@@ -257,6 +299,37 @@
                     </ul>
                 </div>
             </div>
+            <div class="experience-entry">
+                <div class="entry-header">
+                    <div>
+                        <div class="entry-title">Teaching Assistant — Computer Science</div>
+                        <div class="entry-company">American University · Department of Computer Science</div>
+                    </div>
+                    <div class="entry-date">2009 - 2010</div>
+                </div>
+                <div class="entry-description">
+                    <ul>
+                        <li>Served as a paid teaching assistant for CS-101 and CS-102 across two semesters.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-entry">
+                <div class="entry-header">
+                    <div>
+                        <div class="entry-title">Volunteer Reading Tutor</div>
+                        <div class="entry-company">Heads Up · Washington, D.C.</div>
+                    </div>
+                    <div class="entry-date">2008 - 2009</div>
+                </div>
+                <div class="entry-description">
+                    <ul>
+                        <li>Provided after-school reading tutoring to children in low-income Washington, D.C., communities.</li>
+                        <li>Tutored twice weekly for approximately one hour per session during freshman year of college.</li>
+                    </ul>
+                </div>
+            </div>
+
         </section>
 
         <section class="section">
