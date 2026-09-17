@@ -50,6 +50,7 @@
         .contact-label { display: none; }
         .contact-value { overflow-wrap: anywhere; }
         .section { margin-top: 32px; }
+        .projects-section, .projects-section + .section { margin-top: 48px; }
         .section-header { display: flex; align-items: center; gap: 12px; padding-bottom: 10px; margin-bottom: 24px; border-bottom: 1px solid var(--rule); }
         .section-number { color: var(--accent); font-family: 'IBM Plex Mono', Consolas, monospace; font-size: .75rem; }
         .section-title { font-family: 'Orbitron', sans-serif; color: #f0f4f8; font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; }
@@ -65,6 +66,9 @@
         .entry-description li { padding-left: 3px; margin-bottom: 4px; }
         .entry-description li::marker { color: var(--accent); font-size: .8em; }
         .status-current { display: inline-block; vertical-align: middle; margin-left: 8px; padding: 2px 7px; border-radius: 3px; color: var(--accent); background: #ffaa5515; border: 1px solid #ffaa5533; font-size: .61rem; font-weight: 600; letter-spacing: .6px; }
+        .project-thumbnail { float: right; width: 144px; height: 90px; object-fit: contain; background: #08090b; border: 1px solid var(--rule); border-radius: 4px; margin: 3px 0 8px 16px; }
+        .projects-section .entry-description { display: flow-root; }
+        @media screen and (max-width: 480px) { .project-thumbnail { width: 100px; height: 66px; margin-left: 10px; } }
         .project-skills { color: var(--muted); font-size: .82em; margin-top: 5px; }
         .education-entry { padding-bottom: 8px; }
         .download-section { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 36px; }
@@ -81,6 +85,7 @@
             .entry-header { flex-direction: column; gap: 5px; }
         }
         @media print {
+            .project-thumbnail { width: 110px; height: 68px; margin: 2px 0 5px 12px; }
             :root { color-scheme: light; --accent: #8a420c; --ink: #24333e; --muted: #586773; --rule: #dce4e5; }
             .container { background: #fff; border: 0; border-radius: 0; }
             .name, .section-title, .entry-title { color: #24333e; }
@@ -96,6 +101,7 @@
             .name { font-size: 1.85rem; }
             .title { margin-top: 8px; font-size: .86rem; }
             .section { margin-top: 8px; }
+            .projects-section, .projects-section + .section { margin-top: 24px; }
             .section-header { margin-bottom: 10px; padding-bottom: 5px; }
             .experience-entry { margin-bottom: 5px; padding-bottom: 5px; }
             .entry-header { margin-bottom: 4px; gap: 8px 16px; }
@@ -313,6 +319,7 @@
                     <div class="entry-date">2026.08.29</div>
                 </div>
                 <div class="entry-description">
+                    <img class="project-thumbnail" src="../media/resume-pics/npc-rag.png" alt="Knowledge-aware NPC dialogue demo" loading="eager">
                     <p>Built a dialogue system that lets game NPCs answer natural-language questions about the game world and events as they happen.</p>
                     <ul>
                         <li>Routed player messages through a RAG pipeline so NPC responses draw on a database of game-world facts.</li>
@@ -333,6 +340,7 @@
                     <div class="entry-date">2025.10 - 2025.11</div>
                 </div>
                 <div class="entry-description">
+                    <img class="project-thumbnail" src="../media/resume-pics/epsilon-pic.png" alt="Epsilon IV gameplay" loading="eager">
                     <p>Lead Programmer on a four-person team for Player2 AI Game Jam #3 (5 weeks).</p>
                     <ul>
                         <li>Built a game where players solve puzzles by talking to NPCs in natural language, with dialogue powered by an LLM.</li>
@@ -349,6 +357,7 @@
                     <div class="entry-date">2026.08</div>
                 </div>
                 <div class="entry-description">
+                    <img class="project-thumbnail" src="../media/resume-pics/game-design-pic-2.png" alt="Adaptive level design demo" loading="eager">
                     <p>Built a browser-based JavaScript AI agent during a weekend hackathon in August 2026.</p>
                     <ul>
                         <li>Used Nemotron 3 Ultra 550B to design each new game level using player feedback and gameplay metrics from the previous level.</li>
