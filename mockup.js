@@ -2,33 +2,36 @@
    bottom are scaffolding for step two and get deleted in the rewrite. */
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* ── Solar Defense Force: click-to-play gameplay ──────────── */
-  var sdfVideo = document.getElementById('sdfVideo');
-  var sdfPlay = document.getElementById('sdfPlay');
-  var sdfStatus = document.getElementById('sdfVideoStatus');
-  sdfVideo.controls = false;
-  sdfPlay.hidden = false;
-  sdfVideo.addEventListener('ended', function () {
-    var hadFocus = document.activeElement === sdfVideo;
-    sdfVideo.controls = false;
-    sdfVideo.load(); // Reset playback and show the title poster again.
-    sdfPlay.hidden = false;
-    sdfPlay.disabled = false;
-    if (hadFocus) sdfPlay.focus();
-  });
-  sdfPlay.addEventListener('click', async function () {
-    sdfPlay.disabled = true;
-    sdfStatus.textContent = '';
-    try {
-      await sdfVideo.play();
-      sdfPlay.hidden = true;
-      sdfVideo.controls = true;
-      sdfVideo.focus();
-    } catch (error) {
-      sdfStatus.textContent = 'The video could not start. Please try again.';
-    } finally {
-      sdfPlay.disabled = false;
-    }
+  /* ── Click-to-play gameplay ──────────────────────────────── */
+  document.querySelectorAll('.gameplay-media').forEach(function (media) {
+    var video = media.querySelector('video');
+    var playButton = media.querySelector('.gameplay-play');
+    var status = media.querySelector('.gameplay-status');
+
+    video.controls = false;
+    playButton.hidden = false;
+    video.addEventListener('ended', function () {
+      var hadFocus = document.activeElement === video;
+      video.controls = false;
+      video.load(); // Reset playback and show the poster again.
+      playButton.hidden = false;
+      playButton.disabled = false;
+      if (hadFocus) playButton.focus();
+    });
+    playButton.addEventListener('click', async function () {
+      playButton.disabled = true;
+      status.textContent = '';
+      try {
+        await video.play();
+        playButton.hidden = true;
+        video.controls = true;
+        video.focus();
+      } catch (error) {
+        status.textContent = 'The video could not start. Please try again.';
+      } finally {
+        playButton.disabled = false;
+      }
+    });
   });
 
   /* ── Epsilon IV: tabbed process panels ─────────────────────── */

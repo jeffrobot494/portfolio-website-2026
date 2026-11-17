@@ -63,18 +63,18 @@
     </div>
 
     <div class="pcard-main">
-      <div class="pcard-media">
-        <div class="frame frame--video sdf-player">
-          <video id="sdfVideo" poster="media/sdf-title.png" preload="none" playsinline controls
+      <div class="pcard-media gameplay-media">
+        <div class="frame frame--video gameplay-player">
+          <video poster="media/sdf-title.png" preload="none" playsinline controls
                  aria-label="Solar Defense Force: First Contact gameplay">
             <source src="media/xcom-high-run.mp4" type="video/mp4">
             Your browser does not support video. <a href="media/xcom-high-run.mp4">Watch the gameplay video</a>.
           </video>
-          <button class="sdf-play" id="sdfPlay" type="button" aria-label="Play Solar Defense Force: First Contact gameplay" hidden>
+          <button class="gameplay-play" type="button" aria-label="Play Solar Defense Force: First Contact gameplay" hidden>
             <span aria-hidden="true">▶</span>
           </button>
         </div>
-        <p id="sdfVideoStatus" role="status"></p>
+        <p class="gameplay-status" role="status"></p>
       </div>
       <div class="pcard-body">
         <p>Your mission is to thwart the alien invasion of the Sol system. Outmaneuver the aliens from your strategic command center, and scatter their brains through space in side-scrolling action levels. All art is place holder and systems are work in progress.

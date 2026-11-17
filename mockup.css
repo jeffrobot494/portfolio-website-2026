@@ -220,14 +220,15 @@ body[data-grain="on"] .bd-grain { opacity: .45; }
 
 .nav-links {
   display: flex;
-  gap: 22px;
+  flex-wrap: wrap;
+  gap: 4px 22px;
   list-style: none;
   font-family: var(--f-mono);
   font-size: 11px;
   letter-spacing: .12em;
   text-transform: uppercase;
 }
-.nav-links a { color: var(--text-dim); }
+.nav-links a { color: var(--text-dim); white-space: nowrap; }
 .nav-links a:hover { color: var(--brand-lt); text-shadow: none; }
 
 /* ── Page shell ────────────────────────────────────────────────── */
@@ -414,11 +415,10 @@ body[data-grain="on"] .bd-grain { opacity: .45; }
   background: #05070a;
   box-shadow: 0 0 40px -18px var(--accent);
 }
-.frame--video { aspect-ratio: 16 / 9; }
-.sdf-player { position: relative; }
-#solar-defense-force .pcard-media { flex-direction: column; }
-.sdf-player #sdfVideo { object-fit: contain; }
-.sdf-play {
+.frame--video { aspect-ratio: var(--video-ratio, 16 / 9); }
+.gameplay-player { position: relative; }
+.gameplay-media { flex-direction: column; }
+.gameplay-play {
   position: absolute;
   inset: 50% auto auto 50%;
   transform: translate(-50%, -50%);
@@ -433,8 +433,8 @@ body[data-grain="on"] .bd-grain { opacity: .45; }
   cursor: pointer;
   box-shadow: 0 0 28px rgba(0, 0, 0, .6);
 }
-.sdf-play:hover { background: var(--accent); color: var(--void); }
-#sdfVideoStatus:not(:empty) { margin-top: 12px; }
+.gameplay-play:hover { background: var(--accent); color: var(--void); }
+.gameplay-status:not(:empty) { margin-top: 12px; }
 .frame iframe, .frame img, .frame video {
   display: block;
   width: 100%;
@@ -442,6 +442,7 @@ body[data-grain="on"] .bd-grain { opacity: .45; }
   border: 0;
   object-fit: cover;
 }
+.gameplay-player video { object-fit: contain; }
 
 /* card footer: tags + links */
 .pcard-foot {
@@ -667,13 +668,15 @@ body[data-grain="on"] .bd-grain { opacity: .45; }
 
 /* ── Responsive ────────────────────────────────────────────────── */
 @media (max-width: 820px) {
+  html { scroll-padding-top: 98px; }
   .pcard--split .pcard-main { grid-template-columns: 1fr; }
-  .nav-links { gap: 14px; font-size: 10px; }
+  .nav-links { column-gap: 14px; font-size: 10px; }
   .nav-name { font-size: 12px; }
   .shell { gap: 28px; }
   .card-fan { transform: scale(.86); transform-origin: top center; margin-bottom: -60px; }
 }
 @media (max-width: 560px) {
+  html { scroll-padding-top: 136px; }
   .nav { flex-direction: column; align-items: flex-start; gap: 8px; }
 
   .pcard-foot { flex-direction: column; align-items: flex-start; }
